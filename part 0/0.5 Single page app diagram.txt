@@ -1,0 +1,42 @@
+browser-> server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server--> browser: HTML-code, JavaScript, CSS
+
+note over browser:
+browser starts executing JavaScript
+end note
+
+browser-> server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server--> browser: [{ content: "HTML is easy", date: "2023-01-25" }, ...]
+
+note over browser:
+browser renders the notes
+using JavaScript
+end note
+
+note over browser:
+user interacts with the application
+for example, clicks on a button
+to create a new note
+end note
+
+browser-> server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+content= user_text
+server--> browser: success
+
+note over browser:
+browser updates the display
+to show the new note
+without refreshing the page
+end note
+
+browser-> server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server--> browser: [{ content: "HTML is easy", date: "2023-01-25" }, {content: "user_text", date: "current_date"},...]
+
+note over browser:
+browser re-renders the notes
+to show the new added note
+end note
+
+note over browser:
+user continues to interact with the application
+end note
